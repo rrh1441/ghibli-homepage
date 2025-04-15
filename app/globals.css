@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 48, 47%, 95%;
+  --foreground: 20, 33%, 25%;
+
+  --card: 0, 0%, 100%;
+  --card-foreground: 20, 33%, 25%;
+
+  --primary: 20, 25%, 29%;
+  --primary-foreground: 0, 0%, 98%;
+
+  --secondary: 24, 9%, 72%;
+  --secondary-foreground: 20, 25%, 29%;
+
+  --accent: 24, 25%, 47%;
+  --accent-foreground: 0, 0%, 98%;
+
+  --border: 24, 9%, 82%;
+  --input: 24, 9%, 82%;
+  --ring: 24, 25%, 47%;
+
+  --radius: 0.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .font-playfair {
+    font-family: var(--font-playfair), serif;
+  }
+
+  .font-lora {
+    font-family: var(--font-lora), serif;
+  }
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c38d9e;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #85677c;
+}
+
+/* Ghibli-inspired background pattern */
+.bg-ghibli-pattern {
+  background-color: #e6f7f2;
+  background-image: radial-gradient(#85cdca 1px, transparent 1px), radial-gradient(#e8a87c 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  position: relative;
+}
+
+.bg-ghibli-pattern::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(232, 168, 124, 0.2) 0%, rgba(133, 205, 202, 0.2) 100%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 100%);
+  z-index: 0;
+}
+
+/* Story card styling */
+.story-card {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 1px
+    rgba(255, 255, 255, 0.1) inset;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.story-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0.5rem;
+  padding: 2px;
+  background: linear-gradient(135deg, #e8a87c, #c38d9e, #85cdca);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.story-card:hover::before {
+  opacity: 1;
+}
+
+/* Floating animations */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float-medium {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes float-fast {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-fast 4s ease-in-out infinite;
+}
